@@ -1,0 +1,44 @@
+import random
+
+def Programa1GeneraLenguaje (n,alfabeto):
+    lenguaje = []
+    palabra=""
+    control = 0
+    while control != n:
+        longitud=random.randint(1, 6)
+        palabra=palabra.join(random.choice(alfabeto) for _ in range(longitud))
+        if palabra not in lenguaje:
+            lenguaje.append(palabra)
+            control = control +1
+            palabra = ""
+        else:
+            palabra = ""
+    return(lenguaje)
+
+def Programa2GeneraAlfabeto(lenguaje):
+    alfabeto = []
+    frase = "".join(lenguaje)
+    for i in frase:
+        if i not in alfabeto:
+            alfabeto.append(i)
+    
+    alfabeto.sort()
+    return (alfabeto)
+
+def ingresaLosDatos():
+    
+    prueba = input(" Ingresa (alf) si quieres obtener un alfabeto a partir de un lenguaje \n Ingresa (leng) si quieres obtener un lenguaje a partir de un alfabeto")
+    if prueba == "leng":
+        alfabeto = input("Ingresa las letras que deseas utilizar.")
+        n = int(input("Ingresa una cantidad de palabras las cuales generaran el lenguaje."))
+        print(Programa1GeneraLenguaje(n,alfabeto))
+    if prueba == "alf":
+        lenguaje = input("Ingresa palabras separadas por espacios.")
+        lenguaje = lenguaje.split()
+        print(Programa2GeneraAlfabeto(lenguaje))
+
+from time import time
+start = time()   
+ingresarDatos()
+end = time()- start
+print(end)

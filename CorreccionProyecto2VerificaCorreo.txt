@@ -1,0 +1,22 @@
+def verificaelCorreo(correo):
+    if correo.islower():
+        if "@" in correo:
+            usuario,dominio = correo.split("@")
+            if "." in dominio:
+                print ("Correo valido")
+            else:
+                print ("Correo falso")
+        else:
+            print("correo falso")
+    else:
+        print("correo falso")
+        
+def IngresarlosDatos():
+    correo = input("Ingresa la direccion de correo electronico")
+    verificaelCorreo(correo)
+    
+from time import time
+start = time()   
+IngresarDatos()
+end = time()- start
+print(end)
